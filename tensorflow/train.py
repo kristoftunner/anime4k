@@ -104,7 +104,7 @@ if __name__ == "__main__":
         tf.config.experimental.set_memory_growth(gpu, True)
 
     # create model
-    model = create_sr2_model(input_depth=3, highway_depth=1, block_depth=1)
+    model = create_sr2_model(input_depth=3, highway_depth=3, block_depth=2)
     model.summary()
 
     dataset_signature = tf.TensorSpec(shape=(256, 256, 3), dtype=tf.uint8)
@@ -173,4 +173,4 @@ if __name__ == "__main__":
     resized_valid_sample = tf.image.resize(
         validation_sample[0], [validation_sample[1].shape[1], validation_sample[1].shape[2]], method="bilinear")
 
-    model.save_weights("anime4k-1-1.h5")
+    model.save_weights("tensorflow/anime4k-3-3-2.h5")
